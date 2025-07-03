@@ -14,15 +14,24 @@ const janson4centavos1854 = [
 
 const decisionTree4centavos1854 = {
     texto: "¿Tiene su moneda puntos alrededor de la fecha?",
+    clave: "P1",
+    aclaracion_si: "Se ven puntos claramente alrededor de la fecha.",
+    aclaracion_no: "No hay puntos visibles alrededor de la fecha.",
     imagen: "4centavos1854info/Pregunta1.jpg",
     loe: [
         { // No
             texto: "¿La segunda N de Confederación está alineada con el rayo largo?",
+            clave: "P2",
+            aclaracion_si: "N alineada con el rayo fino largo.",
+            aclaracion_no: "N desalineada con el rayo fino largo.",
             imagen: "4centavos1854info/Pregunta2.jpg",
             loe: [
                 { name: "CJ# 1.2.3, A6 R1" }, // No
                 { // Sí
                     texto: "¿Cuatro alineada con la segunda A de Nacional?",
+                    clave: "P9",
+                    aclaracion_si: "A de Nacional alineada con la palabra Cuatro.",
+                    aclaracion_no: "A de Nacional por debajo de la palabra Cuatro.",
                     imagen: "4centavos1854info/Pregunta9.jpg",
                     loe: [
                         { name: "CJ# 1.2.2, A5 R4" }, // No
@@ -32,15 +41,24 @@ const decisionTree4centavos1854 = {
             ]
         },
         { // Sí
-            texto: "¿Hay 3 rayos largo-corto-largo seguidos en la parte inferior derecha de la moneda?",
+            texto: "¿Hay 3 rayos largo-corto-largo seguidos en la parte inferior derecha del anverso?",
+            clave: "P3",
+            aclaracion_si: "Hay al menos 3 rayos finos que tienen el patrón largo-corto-largo.",
+            aclaracion_no: "Todos los rayos finos alternan entre largo-corto-largo y corto-largo-corto.",
             imagen: "4centavos1854info/Pregunta3.jpg",
             loe: [
                 { // Sí
                     texto: "¿La segunda N de Confederación está alineada con un rayo?",
+                    clave: "P5",
+                    aclaracion_si: "N alineada con el rayo fino largo.",
+                    aclaracion_no: "N desalineada con el rayo fino largo.",
                     imagen: "4centavos1854info/Pregunta5.jpg",
                     loe: [
                         { // No
-                            texto: "¿Rayo grueso después de la C?",
+                            texto: "¿El rayo grueso está después de la C de Confederación?",
+                            clave: "P6",
+                            aclaracion_si: "El rayo grueso está por delante de la C de Confederación.",
+                            aclaracion_no: "El rayo grueso está por detrás de la C de Confederación.",
                             imagen: "4centavos1854info/Pregunta6.jpg",
                             loe: [
                                 { name: "CJ# 1.1.2, A2 R2" }, // No
@@ -49,10 +67,16 @@ const decisionTree4centavos1854 = {
                         },
                         { // Sí
                             texto: "¿El comienzo de la segunda N de Argentina está alineada con un rayo?",
+                            clave: "P7",
+                            aclaracion_si: "Inicio de la N alineada con el rayo fino largo.",
+                            aclaracion_no: "Final de la N alineada con el rayo fino largo.",
                             imagen: "4centavos1854info/Pregunta7.jpg",
                             loe: [
                                 { // No
                                     texto: "¿La moneda tiene 4 rayos seguidos?",
+                                    clave: "P8",
+                                    aclaracion_si: "Sobre el 54, hay 4 rayos finos seguidos.",
+                                    aclaracion_no: "Sobre el 54, hay 3 rayos finos, como en el resto de la moneda.",
                                     imagen: "4centavos1854info/Pregunta8.jpg",
                                     loe: [
                                         { name: "A4" }, // No
@@ -66,6 +90,9 @@ const decisionTree4centavos1854 = {
                 },
                 { // No
                     texto: "¿Los rayos largo-corto-largo están en toda la moneda?",
+                    clave: "P4",
+                    aclaracion_si: "Toda la moneda tiene el patrón largo-corto-largo.",
+                    aclaracion_no: "El patrón largo-corto-largo sólo se repite 3 veces.",
                     imagen: "4centavos1854info/Pregunta4.jpg",
                     loe: [
                         { name: "CJ# 1.4.1, A8 R3" }, // No

@@ -1,47 +1,103 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <link href="https://fonts.googleapis.com/css?family=Crete+Round&display=swap" rel="stylesheet">
     <meta charset="UTF-8" />
     <title>4 Centavos 1854</title>
 </head>
 <body>
+    <style>
+        body {
+            font-family: 'Crete Round', serif;
+            font-size: 28px;
+        }
+        #miTabla, #decision-tree {
+            font-family: 'Crete Round', serif;
+            font-size: 20px;
+        }
+        #miTabla {
+            min-width: 350px;
+            max-width: 400px;
+            table-layout: fixed;
+            word-break: break-word;
+        }
+        #decision-tree {
+            min-width: 440px;
+            max-width: 500px;
+        }
+        #pregunta-img {
+            width: 400px;
+            max-width: 100%;
+        }
+        #pregunta-botones button {
+            font-family: 'Crete Round', serif;
+            font-size: 1.4em;
+            font-weight: bold;
+        }
+        #aclaracion-si, #aclaracion-no {
+            font-size: 0.9em;
+            color: #555;
+            margin-bottom: 12px;
+            padding: 8px 14px;
+            min-width: 280px;
+            box-sizing: border-box;
+            text-align: center;
+            border-radius: 8px;
+        }
+        .filtrada {
+            color: #8d8d8d;
+            background-color: #f5f5f5;
+            opacity: 0.6;
+        }
+    </style>
     <div style="text-align: center;">
         <h1>4 Centavos 1854</h1>
 
-        <table id="miTabla" border="1" style="margin:auto;">
-            <caption style="font-weight: bold; margin-bottom: 8px;">Variantes posibles de 4 Centavos 1854</caption>
-            <thead>
-                <tr>
-                    <td>Variante</td>
-                    <td>Anverso</td>
-                    <td>Reverso</td>
-                </tr>
-            </thead>
-            <tbody>
-            </tbody>
-        </table>
-
-        <div id="decision-tree" style="margin-top: 32px; text-align: center;">
-            <h2>Identifica tu variante</h2>
-            <div id="pregunta-container">
-                <p id="pregunta-text" style="font-size: 1.2em; font-weight: bold;"></p>
-                <div style="display: flex; justify-content: center; align-items: center;">
-                    <img id="pregunta-img" src="" alt="Pregunta" style="width: 400px; margin: 0 24px 0 0;">
-                    <div id="pregunta-botones" style="display: flex; flex-direction: column; align-items: center;">
-                        <button onclick="responder('si')" style="margin: 8px 0; padding: 8px 24px;">Sí</button>
-                        <button onclick="responder('no')" style="margin: 8px 0; padding: 8px 24px;">No</button>
+        <div style="display: flex; justify-content: center; align-items: flex-start; gap: 140px;">
+            <!-- Tabla a la izquierda -->
+            <div id="decision-tree" style="text-align: center;">
+                <h2>Variantes posibles de 4 Centavos 1854</h2>
+                <table id="miTabla" border="1" style="margin-bottom: 24px;">
+                    
+                    <thead>
+                        <tr>
+                            <td>Variante</td>
+                            <td>Anverso</td>
+                            <td>Reverso</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+            <!-- Árbol de decisiones a la derecha -->
+            <div id="decision-tree" style="text-align: center;">
+                <h2>Identifica tu variante</h2>
+                <div id="pregunta-container">
+                    <p id="pregunta-text" style="font-size: 1.2em; font-weight: bold;"></p>
+                    <div style="display: flex; justify-content: center; align-items: center;">
+                        <img id="pregunta-img" src="" alt="Pregunta" style="width: 400px; margin: 0 24px 0 0;">
+                        <div id="pregunta-botones" style="display: flex; flex-direction: column; align-items: center;">
+                            <button onclick="responder('si')" style="margin: 8px 0; padding: 8px 24px;">Sí</button>
+                            <div id="aclaracion-si" style="font-size: 0.9em; color: #555; margin-bottom: 12px;"></div>
+                            <button onclick="responder('no')" style="margin: 8px 0; padding: 8px 24px;">No</button>
+                            <div id="aclaracion-no" style="font-size: 0.9em; color: #555;"></div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div style="display: inline-block; width:32%; text-align: center; vertical-align: top; margin: 1%;">
-            <h3 style="margin-bottom: 8px;">Todos los Anversos</h3>
-            <img src="4centavos1854info/CompleteAnverses.jpg" alt="Anversos" style="width:100%; vertical-align: middle;">
-        </div>
-        <div style="display: inline-block; width:32%; text-align: center; vertical-align: top; margin: 1%;">
-            <h3 style="margin-bottom: 8px;">Todos los Reversos</h3>
-            <img src="4centavos1854info/CompleteReverses.jpg" alt="Reversos" style="width:100%; vertical-align: middle;">
+        <!-- Imágenes de anversos y reversos debajo -->
+        <div style="margin-top: 32px;">
+            <div style="display: inline-block; width:32%; text-align: center; vertical-align: top; margin: 1%;">
+                <h3 style="margin-bottom: 8px;">Todos los Anversos</h3>
+                <img src="4centavos1854info/CompleteAnverses.jpg" alt="Anversos" style="width:100%; vertical-align: middle;">
+            </div>
+            <div style="display: inline-block; width:32%; text-align: center; vertical-align: top; margin: 1%;">
+                <h3 style="margin-bottom: 8px;">Todos los Reversos</h3>
+                <img src="4centavos1854info/CompleteReverses.jpg" alt="Reversos" style="width:100%; vertical-align: middle;">
+            </div>
         </div>
     </div>
 
@@ -55,6 +111,8 @@
         const preguntaText = document.getElementById('pregunta-text');
         const preguntaImg = document.getElementById('pregunta-img');
         const botones = document.getElementById('pregunta-botones');
+        const aclaracionSi = document.getElementById('aclaracion-si');
+        const aclaracionNo = document.getElementById('aclaracion-no');
 
         if (nodoActual.name) {
             preguntaText.textContent = "Variante identificada: " + nodoActual.name;
@@ -65,27 +123,16 @@
             preguntaImg.src = nodoActual.imagen;
             preguntaImg.style.display = "block";
             botones.style.display = "block";
+            aclaracionSi.textContent = nodoActual.aclaracion_si || "";
+            aclaracionNo.textContent = nodoActual.aclaracion_no || "";
         }
     }
 
     function responder(respuesta) {
         if (!nodoActual.loe) return;
 
-        let preguntaClave = null;
-        if (nodoActual.texto) {
-            const mapaPreguntas = {
-                "¿Tiene su moneda puntos alrededor de la fecha?": "P1",
-                "¿La segunda N de Confederación está alineada con el rayo largo?": "P2",
-                "¿Hay 3 rayos largo-corto-largo seguidos en la parte inferior derecha de la moneda?": "P3",
-                "¿Los rayos largo-corto-largo están en toda la moneda?": "P4",
-                "¿La segunda N de Confederación está alineada con un rayo?": "P5",
-                "¿Rayo grueso después de la C?": "P6",
-                "¿El comienzo de la segunda N de Argentina está alineada con un rayo?": "P7",
-                "¿La moneda tiene 4 rayos seguidos?": "P8",
-                "¿Cuatro alineada con la segunda A de Nacional?": "P9"
-            };
-            preguntaClave = mapaPreguntas[nodoActual.texto];
-        }
+        // Toma la clave directamente del nodo actual
+        let preguntaClave = nodoActual.clave;
 
         if (preguntaClave) {
             variantesFiltradas = variantesFiltradas.filter(v => {
@@ -102,8 +149,11 @@
     function actualizarTabla() {
         const tbody = document.querySelector('#miTabla tbody');
         tbody.innerHTML = '';
-        variantesFiltradas.forEach(row => {
+        janson4centavos1854.forEach(row => {
             const tr = document.createElement('tr');
+            // Si la variante está en las filtradas, es visible; si no, es "filtrada"
+            const visible = variantesFiltradas.includes(row);
+            if (!visible) tr.classList.add('filtrada');
             tr.innerHTML = `
                 <td>${row.Variante}</td>
                 <td>${row.Anverso}</td>
