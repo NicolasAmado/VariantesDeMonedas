@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>4 Centavos 1854</title>
+</head>
+<body>
+    <div style="text-align: center;">
+        <h1>4 Centavos 1854</h1>
+
+        <table id="miTabla" border="1" style="margin:auto;">
+            <caption style="font-weight: bold; margin-bottom: 8px;">Variantes posibles de 4 Centavos 1854</caption>
+            <thead>
+                <tr>
+                    <td>Variante</td>
+                    <td>Anverso</td>
+                    <td>Reverso</td>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+
+        <div id="decision-tree" style="margin-top: 32px; text-align: center;">
+            <h2>Identifica tu variante</h2>
+            <div id="pregunta-container">
+                <p id="pregunta-text" style="font-size: 1.2em; font-weight: bold;"></p>
+                <div style="display: flex; justify-content: center; align-items: center;">
+                    <img id="pregunta-img" src="" alt="Pregunta" style="width: 400px; margin: 0 24px 0 0;">
+                    <div id="pregunta-botones" style="display: flex; flex-direction: column; align-items: center;">
+                        <button onclick="responder('si')" style="margin: 8px 0; padding: 8px 24px;">Sí</button>
+                        <button onclick="responder('no')" style="margin: 8px 0; padding: 8px 24px;">No</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div style="display: inline-block; width:32%; text-align: center; vertical-align: top; margin: 1%;">
+            <h3 style="margin-bottom: 8px;">Todos los Anversos</h3>
+            <img src="4centavos1854info/CompleteAnverses.jpg" alt="Anversos" style="width:100%; vertical-align: middle;">
+        </div>
+        <div style="display: inline-block; width:32%; text-align: center; vertical-align: top; margin: 1%;">
+            <h3 style="margin-bottom: 8px;">Todos los Reversos</h3>
+            <img src="4centavos1854info/CompleteReverses.jpg" alt="Reversos" style="width:100%; vertical-align: middle;">
+        </div>
+    </div>
+
+    <script src="4centavos1854info/JansonNumbs.js"></script>
+    <script>
+    const tree = decisionTree4centavos1854;
+    let nodoActual = tree;
+    let variantesFiltradas = [...janson4centavos1854];
+
+    function mostrarNodo() {
+        const preguntaText = document.getElementById('pregunta-text');
+        const preguntaImg = document.getElementById('pregunta-img');
+        const botones = document.getElementById('pregunta-botones');
+
+        if (nodoActual.name) {
+            preguntaText.textContent = "Variante identificada: " + nodoActual.name;
+            preguntaImg.style.display = "none";
+            botones.style.display = "none";
+        } else {
+            preguntaText.textContent = nodoActual.texto;
+            preguntaImg.src = nodoActual.imagen;
+            preguntaImg.style.display = "block";
+            botones.style.display = "block";
+        }
+    }
+
+    function responder(respuesta) {
+        if (!nodoActual.loe) return;
+
+        let preguntaClave = null;
+        if (nodoActual.texto) {
+            const mapaPreguntas = {
+                "¿Tiene su moneda puntos alrededor de la fecha?": "P1",
+                "¿La segunda N de Confederación está alineada con el rayo largo?": "P2",
+                "¿Hay 3 rayos largo-corto-largo seguidos en la parte inferior derecha de la moneda?": "P3",
+                "¿Los rayos largo-corto-largo están en toda la moneda?": "P4",
+                "¿La segunda N de Confederación está alineada con un rayo?": "P5",
+                "¿Rayo grueso después de la C?": "P6",
+                "¿El comienzo de la segunda N de Argentina está alineada con un rayo?": "P7",
+                "¿La moneda tiene 4 rayos seguidos?": "P8",
+                "¿Cuatro alineada con la segunda A de Nacional?": "P9"
+            };
+            preguntaClave = mapaPreguntas[nodoActual.texto];
+        }
+
+        if (preguntaClave) {
+            variantesFiltradas = variantesFiltradas.filter(v => {
+                if (v[preguntaClave] === "_") return true;
+                return v[preguntaClave] === (respuesta === "si" ? 1 : 0);
+            });
+            actualizarTabla();
+        }
+
+        nodoActual = respuesta === 'si' ? nodoActual.loe[1] : nodoActual.loe[0];
+        mostrarNodo();
+    }
+
+    function actualizarTabla() {
+        const tbody = document.querySelector('#miTabla tbody');
+        tbody.innerHTML = '';
+        variantesFiltradas.forEach(row => {
+            const tr = document.createElement('tr');
+            tr.innerHTML = `
+                <td>${row.Variante}</td>
+                <td>${row.Anverso}</td>
+                <td>${row.Reverso}</td>
+            `;
+            tbody.appendChild(tr);
+        });
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        actualizarTabla();
+        mostrarNodo();
+    });
+    </script>
+</body>
+</html>
