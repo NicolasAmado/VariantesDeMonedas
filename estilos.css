@@ -21,16 +21,37 @@ body {
     max-width: 500px;
 }
 
+.pregunta-flex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 320px; /* o el valor que quieras */
+    width: 100%;
+    gap: 24px;
+}
+
 #pregunta-img {
+    width: 400px;
+    max-width: 100%;
     min-height: 300px;
-    /* Así el espacio de la imagen siempre está reservado */
     display: block;
+}
+
+#pregunta-botones {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;   /* centra verticalmente */
+    align-items: center;       /* centra horizontalmente */
+    height: 100%;   
+    
 }
 
 #pregunta-botones button {
     font-family: 'Crete Round', serif;
-    font-size: 1.4em;
-    font-weight: bold;
+    font-size: 1.2em;
+    padding: 12px 20px;
+    text-align: center;
+    width: 200px;
 }
 
 #aclaracion-si,
@@ -43,6 +64,12 @@ body {
     box-sizing: border-box;
     text-align: center;
     border-radius: 8px;
+    max-width: 280px;
+    width: 100%;
+    text-align: center;
+    font-size: 0.9em;
+    margin-top: 8px;
+    margin-bottom: 12px;
 }
 
 .filtrada {
@@ -119,16 +146,28 @@ body {
         max-width: 100%;
         padding: 16px 4px;
         min-height: unset;
+        width: 100%;
+        box-sizing: border-box;
     }
     #miTabla, #decision-tree {
         min-width: unset;
         max-width: 100%;
         font-size: 18px;
     }
+    .pregunta-flex {
+        flex-direction: column;
+        gap: 8px;
+        align-items: stretch;
+    }
     #pregunta-img {
         width: 100% !important;
         min-height: 120px;
         max-width: 100vw;
+    }
+    #pregunta-botones {
+        width: 100%;
+        min-width: unset;
+        align-items: stretch;
     }
     .cuadro-inferior {
         min-height: unset;
