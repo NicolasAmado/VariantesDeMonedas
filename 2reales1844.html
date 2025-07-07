@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="https://fonts.googleapis.com/css?family=Crete+Round&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="estilos.css">
+    <meta charset="UTF-8" />
+    <title>2 Reales 1844</title>
+</head>
+<body>
+    <div style="text-align: center;">
+        <h1>2 Reales 1844</h1>
+        <div class="cuadros-superiores">
+            <!-- Cuadro 1: Tabla -->
+            <div class="cuadro">
+                <h2 style="margin-top:0;">Variantes posibles de 2 Reales 1844</h2>
+                <table id="miTabla" border="1" style="margin-bottom: 24px;">
+                    <thead>
+                        <tr>
+                            <td>Variante</td>
+                            <td>Anverso</td>
+                            <td>Reverso</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+            <!-- Cuadro 2: Preguntas -->
+            <div class="cuadro">
+                <h2 style="margin-top:0;">Identifica tu variante</h2>
+                <div id="pregunta-container">
+                    <p id="pregunta-text" style="font-size: 1.2em; font-weight: bold;"></p>
+                    <div class="pregunta-flex">
+                        <img id="pregunta-img" src="" alt="Pregunta" data-zoomable>
+                        <div id="pregunta-botones">
+                            <button onclick="responder('si')">Sí</button>
+                            <div id="aclaracion-si"></div>
+                            <button onclick="responder('no')">No</button>
+                            <div id="aclaracion-no"></div>
+                            <button onclick="responder('dudoso')">No estoy seguro</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Cuadro 3: Imágenes anversos y reversos -->
+        <div class="cuadro cuadro-inferior">
+            <div style="display: flex; justify-content: center; gap: 40px; flex-wrap: wrap;">
+                <div style="text-align: center;">
+                    <h3 style="margin-bottom: 8px;">Todos los Anversos</h3>
+                    <img src="2Reales1844info/CompleteAnverses1844.jpg" alt="Anversos" style="width:520px; max-width:100%; vertical-align: middle; cursor: zoom-in;" data-zoomable>
+                </div>
+                <div style="text-align: center;">
+                    <h3 style="margin-bottom: 8px;">Todos los Reversos</h3>
+                    <img src="2Reales1844info/CompleteReverses1844.jpg" alt="Reversos" style="width:520px; max-width:100%; vertical-align: middle; cursor: zoom-in;" data-zoomable>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal de zoom para imágenes -->
+    <div id="zoom-modal">
+        <img id="zoom-img" src="" alt="Zoom">
+    </div>
+    <script src="monedas.js"></script>
+    <script src="2Reales1844info/JansonNumbs.js"></script>
+    <script>
+        // Llama a la función principal pasando los datos de esta moneda
+        iniciarIdentificadorMoneda(decisionTree2reales1844, janson2reales1844);
+    </script>
+</body>
+</html>
